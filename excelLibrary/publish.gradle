@@ -1,0 +1,27 @@
+apply plugin: 'maven-publish'
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.mayz.library'
+                artifactId = 'excel'
+                version = '1.0.1'
+                artifact generateSourcesJar
+            }
+        }
+        repositories {
+            maven {
+                url = "https://packages.aliyun.com/maven/repository/2195575-release-upctNn/"
+                credentials {
+                    username = "6221bfd4bc59cfaaf5c092e8"
+                    password = "z1ewbaQ-etn_"
+                }
+            }
+        }
+    }
+}
+task generateSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier 'sources'
+}
