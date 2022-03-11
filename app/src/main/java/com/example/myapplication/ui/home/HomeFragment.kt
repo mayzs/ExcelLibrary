@@ -55,7 +55,7 @@ class HomeFragment : Fragment() {
 //            }
             var list= ArrayList<TestBean>()
             var testBean=TestBean()
-            testBean.name="马永珍"
+            testBean.name="马仨"
             testBean.department="哈哈哈"
             testBean.macid="3424234234324"
             for (i in 1..100){
