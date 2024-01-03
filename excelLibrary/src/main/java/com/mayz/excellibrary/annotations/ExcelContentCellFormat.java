@@ -12,8 +12,6 @@ import java.lang.annotation.Target;
 
 /**
  * format the content.
- * usual,you can add it on method which return WritableCellFormat,
- * most times ,it doesn't fit the big picture
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({java.lang.annotation.ElementType.METHOD})

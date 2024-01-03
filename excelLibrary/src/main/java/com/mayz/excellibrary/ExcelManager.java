@@ -37,8 +37,8 @@ import java.util.Map;
 
 public class ExcelManager {
 
-    private static Map<String, Field> fieldCache = new HashMap<>();
-    private static Map<Integer, String> titleCache = new HashMap<>();
+    private static final Map<String, Field> fieldCache = new HashMap<>();
+    private static final Map<Integer, String> titleCache = new HashMap<>();
 
     /**
      * write excel to only one sheet ,no format

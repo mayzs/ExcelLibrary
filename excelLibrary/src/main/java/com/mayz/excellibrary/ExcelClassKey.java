@@ -1,9 +1,8 @@
 package com.mayz.excellibrary;
 
 /**
- * orm in excel and java bean fields ,
- * if the field in bean has ExcelContent annotation ,it can be export to excel
- * 2017-12-12 add field index by engine100
+ * @author: mayz
+ * @version: 1.0
  */
 class ExcelClassKey {
 

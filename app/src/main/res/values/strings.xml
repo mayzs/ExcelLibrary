@@ -3,4 +3,17 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <string name="social_contract">收起</string>
+    <string name="social_expend">展开</string>
+    <string name="social_text_target">网页链接</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="product_store">门店:  %1$s</string>
+    <string name="product_name">设备名称:  %1$s</string>
+    <string name="product_format">设备编码:  %1$s</string>
+    <string name="product_weight">设备序列号:  %1$s</string>
+    <string name="product_date">日期:  %1$s</string>
+    <string name="product_route_name">路线名称:  %1$s</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.mayz.excellibrary
 
+import android.annotation.SuppressLint
 import android.text.TextUtils
 import com.mayz.excellibrary.annotations.ExcelContent
 import com.mayz.excellibrary.annotations.ExcelSheet
@@ -12,7 +13,6 @@ import java.io.*
 import java.lang.reflect.Field
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.HashMap
 
 object ExcelManagerKtn {
 
@@ -55,10 +55,12 @@ object ExcelManagerKtn {
 
     fun toExcel(fileAbsoluteName: String?, dataList: List<*>?): Boolean {
         try {
-            val file = File(fileAbsoluteName)
-            val folder = file.parentFile
-            if (!folder.exists()) {
-                folder.mkdirs()
+            val file = fileAbsoluteName?.let { File(it) }
+            val folder = file?.parentFile
+            if (folder != null) {
+                if (!folder.exists()) {
+                    folder.mkdirs()
+                }
             }
             val stream: OutputStream = FileOutputStream(file, false)
             return toExcel(stream, dataList)
@@ -71,8 +73,10 @@ object ExcelManagerKtn {
     fun toExcel(file: File, dataList: List<*>?): Boolean {
         try {
             val folder = file.parentFile
-            if (!folder.exists()) {
-                folder.mkdirs()
+            if (folder != null) {
+                if (!folder.exists()) {
+                    folder.mkdirs()
+                }
             }
             val stream: OutputStream = FileOutputStream(file, false)
             return toExcel(stream, dataList)
@@ -98,7 +102,7 @@ object ExcelManagerKtn {
         }
         // read map in excel
         val titleContentValues = getMapFromExcel(excelFile, sheetIndex, sheetName)
-        if (titleContentValues == null || titleContentValues.isEmpty()) {
+        if (titleContentValues.isNullOrEmpty()) {
             return null
         }
         val value0 = titleContentValues[0]
@@ -150,14 +154,14 @@ object ExcelManagerKtn {
 
     @Throws(Exception::class)
     private fun getField(type: Class<*>, fieldName: String): Field? {
-        var f: Field?
+        val f: Field?
         if (fieldCache.containsKey(fieldName)) {
             f = fieldCache[fieldName]
         } else {
             f = type.getDeclaredField(fieldName)
             fieldCache[fieldName] = f
         }
-        f!!.isAccessible = true
+        f?.isAccessible = true
         return f
     }
 
@@ -237,6 +241,7 @@ object ExcelManagerKtn {
         return title
     }
 
+    @SuppressLint("SimpleDateFormat")
     private fun getContent(row: Row, c: Int, formulaEvaluator: FormulaEvaluator): String {
         var value = ""
         try {
@@ -269,7 +274,7 @@ object ExcelManagerKtn {
 
     @Throws(IOException::class)
     private fun getWorkbook(file: File): Workbook? {
-        var wb: Workbook?
+        val wb: Workbook?
         val `in` = FileInputStream(file)
         wb = when {
             file.name.lowercase(Locale.getDefault()).endsWith(EXCEL_XLS) -> {     //Excel 2003

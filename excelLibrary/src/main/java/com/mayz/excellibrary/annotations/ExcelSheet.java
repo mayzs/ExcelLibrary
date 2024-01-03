@@ -1,9 +1,3 @@
-/*
- * Created by Engine100 on 2016-11-30 11:09:14.
- *
- *      https://github.com/engine100
- *
- */
 package com.mayz.excellibrary.annotations;
 
 import java.lang.annotation.Retention;

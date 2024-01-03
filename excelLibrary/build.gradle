@@ -4,19 +4,17 @@ plugins {
 }
 ext {
     PUBLISH_ARTIFACT_ID = "excel" //你的artifact_id，一般是module的名字
-    PUBLISH_VERSION = "1.0.1"  //发布版本号
+    PUBLISH_VERSION = "1.0.2"  //发布版本号
     PUBLISH_GROUP_ID = 'io.github.mayzs'  //你的sonatype的group_id
 }
 apply from: 'publish.gradle'
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         minSdk 21
-        targetSdk 32
-        versionCode 1
-        versionName "1.0.1"
+        targetSdk 33
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -39,14 +37,14 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.6.0'
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
     //implementation 'net.sourceforge.jexcelapi:jxl:2.6.12'
     implementation files('libs/poi-3.12-android-a.jar')
-    implementation files('libs/poi-ooxml-schemas-3.12-a.jar')
+    implementation files('libs/poi-ooxml-schemas-3.12-20150511-a.jar')
 
-    testImplementation 'junit:junit:'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    //testImplementation 'junit:junit:'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
